@@ -1,4 +1,3 @@
-# Satélites
 # Campos: Identificador (inteiro), Nome (string), País de Origem (string), Ano de Lançamento (inteiro), Função (string)
 5
 000000001, "Sputnik 1", "URSS", 1957, "Primeiro satélite artificial, isto é, o primeiro objeto posto pela humanidade em órbita ao redor de um corpo celeste, no caso a Terra" 
