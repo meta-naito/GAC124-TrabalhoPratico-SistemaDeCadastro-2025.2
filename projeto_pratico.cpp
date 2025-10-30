@@ -8,29 +8,26 @@
 | Tema: Satélites                                                 |
 |                                                                 |
 *******************************************************************/
-
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
-typedef string str;
 
-void lerString(str arquivo_csv) {
+struct infoSatelite {
+	int identificador;
+	string nome;
+	string paisOrigem;
+	int anoLancamento;
+	string funcao;
+};
+
+void lerString(string arquivo_csv) {
 	
 	
-	}
-
-
+}
 
 int main(){
-	//campos do arquivo csv
-	int identificador = 0;
-	string nome = "";
-	string paisOrigem = "";
-	int anoLancamento = 0;
-	string funcao = "";
-	
 	//variaveis auxiliares
 	string linha = "";
 	char lixo;
@@ -44,30 +41,36 @@ int main(){
 	}
 	
 	else {
-		getline(arquivo_csv, linha);
+		getline(arquivo_csv, linha); //leitura da linha de campos
 		
-		arquivo_csv >> numRegistros; 
+		arquivo_csv >> numRegistros;
 		arquivo_csv.ignore();
+		
+		infoSatelite *satelites = new infoSatelite[numRegistros];
 		
 		for (int i = 0; i < numRegistros; i++) {
 			
-			arquivo_csv >> identificador;
+			arquivo_csv >> satelites[i].identificador;
 			arquivo_csv >> lixo; //lixo nesse caso são as vírgulas
 			
 			arquivo_csv >> lixo;
-			getline(arquivo_csv, nome, ',');
+			getline(arquivo_csv, satelites[i].nome, '"');
 			arquivo_csv >> lixo;
 			
-			getline(arquivo_csv, paisOrigem, ',');
+			arquivo_csv >> lixo;
+			getline(arquivo_csv, satelites[i].paisOrigem, '"');
+			arquivo_csv >> lixo;
 			
-			arquivo_csv >> anoLancamento;
+			arquivo_csv >> satelites[i].anoLancamento;
 			arquivo_csv >> lixo >> lixo;
 			
-			getline(arquivo_csv, funcao, '"');
+			getline(arquivo_csv, satelites[i].funcao, '"');
 			
-			cout << nome << endl;
+			cout << satelites[i].anoLancamento << endl;
 		}
+		
+		delete [] satelites;
 	}
-	
+
 	return 0;
 }
